@@ -31,56 +31,33 @@ export const Hero: React.FC = () => {
           transition={{ duration: 1, delay: 0.2 }}
           className="order-2 lg:order-1 relative h-[400px] lg:h-[600px] w-full flex items-center justify-center"
         >
-          {/* Tech Viz */}
-          <div className="relative w-full h-full max-w-[500px] max-h-[500px]">
-            <svg className="w-full h-full" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                 <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#FD8901" stopOpacity="0.2" />
-                  <stop offset="100%" stopColor="#020001" stopOpacity="0" />
-                </linearGradient>
-                <filter id="glow-hero">
-                  <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
-                  <feMerge>
-                    <feMergeNode in="coloredBlur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                  </feMerge>
-                </filter>
-              </defs>
-              
-              {/* Rotating Rings */}
-              <g className="animate-[spin_10s_linear_infinite] origin-center">
-                <circle cx="200" cy="200" r="150" stroke="#FD8901" strokeWidth="1" strokeDasharray="10 20" strokeOpacity="0.2" fill="none" />
-                <circle cx="200" cy="200" r="120" stroke="#FD8901" strokeWidth="1" strokeDasharray="4 4" strokeOpacity="0.4" fill="none" />
-              </g>
-
-               {/* Center Hexagon */}
-              <motion.path
-                d="M200 100 L286 150 L286 250 L200 300 L114 250 L114 150 Z"
-                fill="url(#grad1)"
-                stroke="#FD8901"
-                strokeWidth="2"
-                filter="url(#glow-hero)"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 2 }}
-              />
-              
-              {/* Pulsing Core */}
-              <circle cx="200" cy="200" r="10" fill="#FD8901">
-                <animate attributeName="r" values="10;15;10" dur="2s" repeatCount="indefinite" />
-                <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite" />
-              </circle>
-            </svg>
+          {/* Tech Viz Container */}
+          <div className="relative w-full h-full max-w-[500px] max-h-[500px] flex items-center justify-center">
             
-            {/* Holographic HUD Card */}
+            {/* Logo with Floating Animation */}
             <motion.div 
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-40 bg-[#0a0a0a]/80 backdrop-blur-md border border-arcadium-orange/30 rounded-lg p-5 flex flex-col justify-between shadow-[0_0_30px_rgba(253,137,1,0.2)]"
+               className="relative z-0 w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] md:w-[420px] md:h-[420px] flex items-center justify-center"
+               animate={{ y: [0, -15, 0] }}
+               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            >
+               {/* Glow Effect behind logo */}
+               <div className="absolute inset-0 bg-arcadium-orange/10 blur-[60px] rounded-full scale-110" />
+               
+               <img 
+                 src="logo.webp" 
+                 alt="Arcadium Logo" 
+                 className="w-full h-full object-contain drop-shadow-[0_0_40px_rgba(253,137,1,0.25)]"
+               />
+            </motion.div>
+            
+            {/* Holographic HUD Card - Overlay */}
+            {/* 
+            <motion.div 
+              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-40 bg-[#0a0a0a]/80 backdrop-blur-md border border-arcadium-orange/30 rounded-lg p-5 flex flex-col justify-between shadow-[0_0_30px_rgba(253,137,1,0.2)] z-10"
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: "-50%", opacity: 1 }}
               transition={{ delay: 1, duration: 0.8 }}
             >
-               {/* Decorative corners */}
                <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-arcadium-orange" />
                <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-arcadium-orange" />
                <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-arcadium-orange" />
@@ -108,6 +85,7 @@ export const Hero: React.FC = () => {
                  </div>
                </div>
             </motion.div>
+            */}
           </div>
         </motion.div>
 
@@ -122,13 +100,17 @@ export const Hero: React.FC = () => {
               <span className="w-2 h-2 rounded-full bg-arcadium-orange animate-pulse" />
               <span className="text-xs font-rajdhani font-bold tracking-widest text-arcadium-orange uppercase">Subnet Live on Bittensor</span>
             </div>
-
-            <h1 className="text-5xl lg:text-7xl font-rajdhani font-bold text-white leading-[0.9] mb-6">
-              The First <span className="text-transparent bg-clip-text bg-gradient-to-r from-arcadium-orange to-yellow-500">AI Gaming</span> Subnet
+            
+            <h1 className="text-6xl lg:text-8xl font-rajdhani font-bold text-white leading-none mb-2 tracking-wide">
+              ARCADIUM
             </h1>
-            <h2 className="text-2xl lg:text-3xl font-inter font-medium text-gray-300 mb-8">
-              Professional-level analytics for every gamer.
+
+            <h2 className="text-3xl lg:text-5xl font-rajdhani font-bold text-gray-200 leading-[0.9] mb-6">
+              The First <span className="text-transparent bg-clip-text bg-gradient-to-r from-arcadium-orange to-yellow-500">AI Gaming</span> Subnet
             </h2>
+            <h3 className="text-xl lg:text-2xl font-inter font-medium text-gray-400 mb-8">
+              Professional-level analytics for every gamer.
+            </h3>
             <p className="text-lg text-gray-400 font-inter leading-relaxed max-w-xl mb-10">
               Decentralized intelligence meets competitive gaming. Built on Bittensor's infrastructure, Arcadium brings institutional-grade analytics to every player, team, and tournament.
             </p>

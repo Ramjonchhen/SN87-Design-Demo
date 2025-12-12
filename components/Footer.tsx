@@ -38,7 +38,7 @@ export const Footer: React.FC = () => {
             <h4 className="text-white font-rajdhani font-bold text-lg mb-6">Community</h4>
             <ul className="space-y-3 font-inter text-arcadium-text-muted">
               <li>
-                <a href="#" className="flex items-center gap-2 hover:text-arcadium-orange transition-colors">
+                <a href="https://x.com/Arcadium87" target="_blank" className="flex items-center gap-2 hover:text-arcadium-orange transition-colors">
                   <Twitter className="w-4 h-4" /> Twitter / X
                 </a>
               </li>

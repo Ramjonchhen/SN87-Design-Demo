@@ -65,7 +65,7 @@ export const Navbar: React.FC = () => {
         {/* Left Side: Logo */}
         <div className="flex-1 flex justify-start">
           <a href="#" className="flex items-center space-x-3 group" onClick={(e) => scrollToSection(e, '#hero')}>
-            <Logo className="w-10 h-10 group-hover:drop-shadow-[0_0_8px_rgba(253,137,1,0.5)] transition-all" />
+            {/* <Logo className="w-10 h-10 group-hover:drop-shadow-[0_0_8px_rgba(253,137,1,0.5)] transition-all" /> */}
             <span className="text-2xl font-rajdhani font-bold text-white tracking-wider">ARCADIUM</span>
           </a>
         </div>

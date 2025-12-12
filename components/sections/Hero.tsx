@@ -29,63 +29,70 @@ export const Hero: React.FC = () => {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="order-2 lg:order-1 relative h-[400px] lg:h-[600px] w-full flex items-center justify-center"
+          className="order-2 lg:order-1 relative h-[500px] lg:h-[600px] w-full flex items-center justify-center"
         >
           {/* Tech Viz Container */}
-          <div className="relative w-full h-full max-w-[500px] max-h-[500px] flex items-center justify-center">
+          <div className="relative w-full h-full max-w-[600px] max-h-[600px] flex items-center justify-center">
             
-            {/* Logo with Floating Animation */}
+            {/* Logo Group Animation */}
             <motion.div 
-               className="relative z-0 w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] md:w-[420px] md:h-[420px] flex items-center justify-center"
+               className="relative w-[300px] h-[300px] sm:w-[360px] sm:h-[360px] md:w-[480px] md:h-[480px] flex items-center justify-center"
                animate={{ y: [0, -15, 0] }}
                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             >
                {/* Glow Effect behind logo */}
                <div className="absolute inset-0 bg-arcadium-orange/10 blur-[60px] rounded-full scale-110" />
                
+               {/* Logo Image - Shifted UP to make space, Z-Index Lower so Card is on top */}
                <img 
-                 src="logo.webp" 
+                 src="Transparent-Logo.png" 
                  alt="Arcadium Logo" 
-                 className="w-full h-full object-contain drop-shadow-[0_0_40px_rgba(253,137,1,0.25)]"
+                 className="relative z-10 w-full h-full object-contain drop-shadow-[0_0_40px_rgba(253,137,1,0.25)] -translate-y-12 md:-translate-y-16"
                />
-            </motion.div>
-            
-            {/* Holographic HUD Card - Overlay */}
-            {/* 
-            <motion.div 
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-40 bg-[#0a0a0a]/80 backdrop-blur-md border border-arcadium-orange/30 rounded-lg p-5 flex flex-col justify-between shadow-[0_0_30px_rgba(253,137,1,0.2)] z-10"
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: "-50%", opacity: 1 }}
-              transition={{ delay: 1, duration: 0.8 }}
-            >
-               <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-arcadium-orange" />
-               <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-arcadium-orange" />
-               <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-arcadium-orange" />
-               <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-arcadium-orange" />
 
-               <div className="flex justify-between items-center mb-2">
-                 <div className="flex items-center gap-2">
-                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                   <div className="text-xs text-arcadium-orange font-rajdhani tracking-widest font-bold">SYSTEM ACTIVE</div>
-                 </div>
-                 <div className="text-[10px] text-gray-500 font-mono">V 1.0.4</div>
-               </div>
-               
-               <div className="space-y-3 font-mono text-xs">
-                 <div className="flex justify-between text-gray-400">
-                   <span>DATA STREAM</span>
-                   <span className="text-arcadium-orange">OPTIMIZED</span>
-                 </div>
-                 <div className="h-1 w-full bg-white/10 overflow-hidden">
-                    <motion.div className="h-full bg-arcadium-orange" initial={{ width: "0%" }} animate={{ width: "100%" }} transition={{ duration: 1.5, delay: 1.5, repeat: Infinity, repeatDelay: 3 }} />
-                 </div>
-                 <div className="flex justify-between text-gray-400">
-                   <span>AI MODELS</span>
-                   <span className="text-blue-400">ONLINE</span>
-                 </div>
-               </div>
+               {/* Holographic HUD Card - Z-Index Higher (On Top) */}
+               <motion.div 
+                  className="absolute z-20
+                             /* Mobile: Centered below the visual logo area */
+                             top-[62%] right-15 -translate-x-1/2 w-64 h-32
+
+                             /* Desktop: Bottom right corner, slightly overlapping logo space */
+                             lg:top-auto lg:bottom-[15%] lg:right-[-10%] lg:left-auto lg:translate-x-0 lg:w-72 lg:h-40
+                             
+                             bg-[#0a0a0a]/20 backdrop-blur-sm border border-arcadium-orange/30 rounded-lg p-2 md:p-3 flex flex-col justify-between shadow-[0_0_30px_rgba(253,137,1,0.2)]"
+                  initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{ delay: 0.5, duration: 0.8 }}
+                >
+                   {/* Tech corners */}
+                   <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-arcadium-orange" />
+                   <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-arcadium-orange" />
+                   <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-arcadium-orange" />
+                   <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-arcadium-orange" />
+
+                   <div className="flex justify-between items-center mb-1">
+                     <div className="flex items-center gap-2">
+                       <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-green-500 rounded-full animate-pulse" />
+                       <div className="text-[10px] md:text-xs text-arcadium-orange font-rajdhani tracking-widest font-bold">SYSTEM ACTIVE</div>
+                     </div>
+                     <div className="text-[9px] md:text-[10px] text-gray-500 font-mono">V 1.0.4</div>
+                   </div>
+                   
+                   <div className="space-y-2 md:space-y-3 font-mono text-[10px] md:text-xs">
+                     <div className="flex justify-between text-gray-400">
+                       <span>DATA STREAM</span>
+                       <span className="text-arcadium-orange">OPTIMIZED</span>
+                     </div>
+                     <div className="h-1 w-full bg-white/10 overflow-hidden">
+                        <motion.div className="h-full bg-arcadium-orange" initial={{ width: "0%" }} animate={{ width: "100%" }} transition={{ duration: 1.5, delay: 1.5, repeat: Infinity, repeatDelay: 3 }} />
+                     </div>
+                     <div className="flex justify-between text-gray-400">
+                       <span>AI MODELS</span>
+                       <span className="text-blue-400">ONLINE</span>
+                     </div>
+                   </div>
+                </motion.div>
             </motion.div>
-            */}
           </div>
         </motion.div>
 
